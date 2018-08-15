@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hangman</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
     <header class="nav nav-pills nav-fill ">
@@ -14,31 +14,38 @@
             <h1>Hangman</h1>
         </div>
     </header>
-    <div class="container">
+    <div class="container-fluid">
         <div class="col-sm start btn btn-primary justify-content-md-center" id="startGame">Start New Game</div>
         <div class="text-center" id="instruction"></div>
         <div class="row">
-            <div class="col-sm text-center">
-                <div class="row jumbotron">
-                   <h1 id="rightGuess">____ ____ ___</h1> 
+            <div class="col-sm">
+                <div class="container-fluid row justify-content-center mt-3 pb-5 pt-5">
+                   <h1 id="rightGuess">___ _____</h1> 
                 </div>
-                <div class="row">Wrong Guessed:<span id="wrongGuess"></span> </div>
-                <div class="row">Guesses Left: <span id="guessRemain"></span> </div>
+                <div class="container-fluid row justify-content-center mt-4">
+                    <h3>Guessed Letter</h3>
+                    <h3 class="mt-5" id="wrongGuess"></h3> 
+                </div>
+                <div class="container-fluid row justify-content-center mt-4">
+                    <h3>Guesses Left</h3>
+                    <h3 class="mt-5" id="guessRemain"></h3> 
+                </div>
                 
             </div>
             <div class="col-sm">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                <div class="card" style="width: 100%">
+                    <img class="card-img-top" id="image" src="assets/img/newgame.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Display Win or Lose</h5>
+                        <h5 class="card-title" id="message2">Guess The Name Of The Beach</h5>
                         <h5 class="Wins">Wins: <span id="wins"></span></h5>
                         <h5 class="Losses">Losses: <span id="losses"></span></h5>
+                        <div id="reset" class="container-fluid btn btn-primary align-self-center">Reset Score</div>
                     </div>
                     </div>
             </div>
         </div>
         <div class="answer"></div>
     </div>
-    <script src="app.js"></script>
+    <script src="assets/app.js"></script>
 </body> 
 </html>

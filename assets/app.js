@@ -7,11 +7,14 @@ let _guessRemain = document.getElementById('guessRemain');
 let _wins = document.getElementById('wins');
 let _losses = document.getElementById('losses');
 let _message = document.getElementById('instruction');
-
+let _message2 = document.getElementById('message2');
+let _image = document.getElementById('image');
+let _imageSrc = _image.getAttribute('src');
+let _reset = document.getElementById('reset');
 
 //Game Variables
-let secretWords = ['Santa Monica', 'Huntington', 'Newport', 'Laguna', 'Venice', 'Manhattan'];
-let numGuess = 10;
+let secretWords = ['Santa Monica', 'Huntington', 'Newport', 'Laguna', 'Venice'];
+let numGuess = 8;
 let wins = 0;
 let losses = 0;
 let gameState = false;
@@ -19,16 +22,20 @@ let word = '';
 let letterGuessed = [];
 let wrongGuess = [];
 let space = [];
+let images = ['assets/img/Santa Monica.jpg', 'assets/img/Huntington.jpg', 'assets/img/Newport.jpg', 'assets/img/Laguna.jpg', 'assets/img/Venice.jpg']
 
 
 //Game Function
 
 function startGame() {
     gameState = true;
-    numGuess = 10;
+    numGuess = 8;
     letterGuessed = [];
     wrongGuess = [];
     space = [];
+    _wins.textContent = wins;
+    _losses.textContent = losses;
+    _image.setAttribute('src', 'assets/img/newgame.jpg');
     word = secretWords[Math.floor(Math.random()* secretWords.length)]
     console.log(word)
     for (let i = 0; i < word.length; i++) {
@@ -47,7 +54,6 @@ function startGame() {
 
 //Guess Letter Functions
 function guessLetter(letter) {
-    console.log(letter);
     if (gameState === true && letterGuessed.indexOf(letter) === -1 ) {
         letterGuessed.push(letter);
         console.log(word)
@@ -61,7 +67,7 @@ function guessLetter(letter) {
         checkLetter(letter);
     } else {
         if (!gameState) {
-            _message.textContent = 'Press Start New Game To Start Over';
+            _message.textContent = 'Press Start New Game To Start';
         } else {
             _message.textContent = "You've already guessed this letter!";
         }
@@ -87,6 +93,8 @@ function win() {
         wins++;
         gameState = false;
         _wins.textContent = wins;
+        _message2.textContent = "You Win!!!";
+        image()
     }
     loss()
 }
@@ -98,12 +106,27 @@ function loss() {
         losses++;
         gameState = false;
         _losses.textContent = losses;
+        _message2.textContent = "You Lose..."
     }
 }
 
+//Change images if win
+function image() {
+    _image.setAttribute('src', images[secretWords.indexOf(word)])
+}
+
+//reset score
+function reset () {
+    wins = 0;
+    _wins.textContent = wins;
+    losses = 0;
+    _losses.textContent = losses;
+}
 //Eventlistener
 
 _startGame.addEventListener('click', startGame)
+_reset.addEventListener('click', reset)
+
 
 //key event
 document.onkeyup = function(event) {
@@ -111,45 +134,3 @@ document.onkeyup = function(event) {
        guessLetter(event.key); 
     }
 }
-//Picking random secret word from the array
-
-//Displaying _ _ _ representing each letter in the secretword
-
-// let lettersRemained = word.length
-// const possibleKey = "abcdefghijklmnopqrstuvwxyz"
-
-// var startGame = document.querySelector('.start')
-
-// startGame.addEventListener('click', event)
-
-// function event() {
-//     startGame.style.display = 'none'
-//     document.querySelector('.instruction').style.display = 'block'
-//     document.querySelector(".answer").textContent = answerWord.join(" ")
-// //Game Loop while the answer letters still left
-// }
-//     document.onkeyup = function(event) {
-//         let guess = event.key;   
-//         for (let i = 0; i<letterGuessed.length; i++){
-//             if (guess !== letterGuessed[i]) {
-//                 // letterGuessed.push(guess);
-//                 console.log(letterGuessed)
-//             }
-//         }
-  
-
-//     // for (let i = 0; i < letterGuessed.length; i++) {
-//     //     if (guess === letterGuessed[i]) {     
-//     for (let i = 0; i < possibleKey.length; i++){
-//         if (guess === possibleKey.charAt(i) && lettersRemained >0) {
-//             for (let i = 0; i < word.length; i++){
-//                 if (guess === word.charAt(i)) {
-//                     answerWord[i] = guess;
-//                     lettersRemained-- ;
-//                     console.log(lettersRemained);
-//                     document.querySelector(".answer").textContent = answerWord.join(" ")
-//                         }
-//                     }
-//         } 
-//     }
-// }
