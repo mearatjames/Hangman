@@ -1,5 +1,4 @@
 //getElement
-
 let _startGame = document.getElementById('startGame');
 let _rightGuess = document.getElementById('rightGuess');
 let _wrongGuess = document.getElementById('wrongGuess');
@@ -26,7 +25,6 @@ let images = ['assets/img/Santa Monica.jpg', 'assets/img/Huntington.jpg', 'asset
 
 
 //Game Function
-
 function startGame() {
     gameState = true;
     numGuess = 8;
@@ -87,7 +85,6 @@ function checkLetter(letter) {
 }
 
 //Win
-
 function win() {
     if (word.toLowerCase() === space.join('').toLowerCase()) {
         wins++;
@@ -100,7 +97,6 @@ function win() {
 }
 
 //Loss
-
 function loss() {
     if (numGuess === 0) {
         losses++;
@@ -122,8 +118,8 @@ function reset () {
     losses = 0;
     _losses.textContent = losses;
 }
-//Eventlistener
 
+//Eventlistener
 _startGame.addEventListener('click', startGame)
 _reset.addEventListener('click', reset)
 
