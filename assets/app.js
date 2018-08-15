@@ -54,7 +54,6 @@ function startGame() {
 function guessLetter(letter) {
     if (gameState === true && letterGuessed.indexOf(letter) === -1 ) {
         letterGuessed.push(letter);
-        console.log(word)
         for (let i = 0; i < word.length; i++) {
             if(word[i].toLowerCase() === letter.toLowerCase()){
                 space[i] = word[i]; 
