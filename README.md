@@ -1,6 +1,5 @@
 # Hangman
 ## California Beaches Name Theme
-----
 A word guess game project using vanilla javascript and Bootstrap for the layout and styling
 ____
 
