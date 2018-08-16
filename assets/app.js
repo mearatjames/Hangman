@@ -35,7 +35,6 @@ function startGame() {
     _losses.textContent = losses;
     _image.setAttribute('src', 'assets/img/newgame.jpg');
     word = secretWords[Math.floor(Math.random()* secretWords.length)]
-    console.log(word)
     for (let i = 0; i < word.length; i++) {
         if (word[i] === ' '){
             space.push(' ');
